@@ -41,7 +41,6 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
-
 // navbar
 let nav = document.getElementsByTagName('nav')[0];
 
@@ -58,7 +57,7 @@ second_added.textContent = "Second Added";
 nav.prepend(second_added);
 
 // nav - color green [task 4]
-nav_items.forEach(elem => elem.style.color = "green");
+nav.querySelectorAll("a").forEach(elem => elem.style.color = "green");
 
 // cta
 let cta = document.querySelector(".cta");
@@ -74,32 +73,25 @@ let cta_img = document.getElementById("cta-img").setAttribute('src', siteContent
 
 // main content
 let main_content_text = document.querySelectorAll(".main-content .text-content");
+const main_content_sections = ["features", "about", "services", "product", "vision"];
 
-let features_h4 = main_content_text[0].getElementsByTagName('h4')[0].textContent = siteContent["main-content"]["features-h4"];
-let features_content = main_content_text[0].getElementsByTagName('p')[0].textContent = siteContent["main-content"]["features-content"];
-
-let about_h4 = main_content_text[1].getElementsByTagName('h4')[0].textContent = siteContent["main-content"]["about-h4"];
-let about_content = main_content_text[1].getElementsByTagName('p')[0].textContent = siteContent["main-content"]["about-content"];
-
-let services_h4 = main_content_text[2].getElementsByTagName('h4')[0].textContent = siteContent["main-content"]["services-h4"];
-let services_content = main_content_text[2].getElementsByTagName('p')[0].textContent = siteContent["main-content"]["services-content"];
-
-let product_h4 = main_content_text[3].getElementsByTagName('h4')[0].textContent = siteContent["main-content"]["product-h4"];
-let product_content = main_content_text[3].getElementsByTagName('p')[0].textContent = siteContent["main-content"]["product-content"];
-
-let vision_h4 = main_content_text[4].getElementsByTagName('h4')[0].textContent = siteContent["main-content"]["vision-h4"];
-let vision_content = main_content_text[4].getElementsByTagName('p')[0].textContent = siteContent["main-content"]["vision-content"];
+main_content_sections.forEach((elem, i) => {
+  main_content_text[i].getElementsByTagName('h4')[0].textContent = siteContent["main-content"][`${elem}-h4`];
+  main_content_text[i].getElementsByTagName('p')[0].textContent = siteContent["main-content"][`${elem}-content`];
+});
 
 let main_img = document.getElementById("middle-img").setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
 // contact
 let contact = document.querySelector(".contact");
 
+let contact_address_content = siteContent["contact"]["address"].split(" ");
+contact_address_content.splice(4, 0, "<br>");
+
 let contact_h4 = contact.getElementsByTagName('h4')[0].textContent = siteContent["contact"]["contact-h4"];
-let contact_address = contact.getElementsByTagName('p')[0].textContent = siteContent["contact"]["address"];
+let contact_address = contact.getElementsByTagName('p')[0].innerHTML = contact_address_content.join(" ");
 let contact_phone = contact.getElementsByTagName('p')[1].textContent = siteContent["contact"]["phone"];
 let contact_email = contact.getElementsByTagName('p')[2].textContent = siteContent["contact"]["email"];
-
 
 // footer
 let footer = document.querySelector("footer");
