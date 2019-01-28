@@ -97,3 +97,20 @@ let contact_email = contact.getElementsByTagName('p')[2].textContent = siteConte
 let footer = document.querySelector("footer");
 
 let footer_copyright = footer.getElementsByTagName('p')[0].textContent = siteContent["footer"]["copyright"];
+
+// stretch - button
+let colors = ["red", "blue", "green", "yellow", "pink", "fuchsia", "gold", "lime", "aqua", "brown", "darkmagenta", "darkorange"];
+let counter = -1;
+
+let btn = document.querySelector('.cta').getElementsByTagName("button")[0].addEventListener('click', (event) =>{
+  event.preventDefault();
+  let element = document.querySelector(".cta").getElementsByTagName("h1")[0];
+  element.innerHTML += "!";
+  counter++;
+  if(counter === colors.length) element.innerHTML = element.innerHTML.slice(0, -12);
+  counter %= colors.length;
+
+  element.style.color = colors[counter];
+
+});
+console.log(btn);
